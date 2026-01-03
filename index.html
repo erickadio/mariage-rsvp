@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSVP — Mariage Éric KADIO & Noël MOMO</title>
+
+  <!-- Calligraphic font for the title -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#1f2328;
+      --muted:#5a6572;
+      --line:#e7e2da;
+      --gold:#b89b5e;
+      --radius:18px;
+      --shadow: 0 18px 50px rgba(25, 30, 35, .10);
+      --max: 980px;
+
+      /* Make background MORE visible */
+      --bg_overlay: 0.06;   /* lower = background more visible (try 0.03–0.10) */
+      --panel_alpha: 0.42;  /* lower = panels more transparent */
+      --blur: 1px;          /* lower = sharper background */
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-serif, "Georgia", "Times New Roman", serif;
+      color:var(--ink);
+      line-height:1.45;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,var(--bg_overlay)), rgba(255,255,255,var(--bg_overlay))),
+        url("background.png");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 50px}
+
+    .page{
+      background: rgba(255,255,255,0.22); /* more transparent */
+      border: 1px solid rgba(231,226,218,.55);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+    }
+
+    header{
+      padding:18px 16px; margin:0 0 16px;
+      background: rgba(255,255,255,var(--panel_alpha));
+      border:1px solid rgba(231,226,218,.60);
+      border-radius: var(--radius);
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+    }
+    header:before{
+      content:""; position:absolute; inset:-40px;
+      background: radial-gradient(450px 250px at 15% 20%, rgba(184,155,94,.12), transparent 60%),
+                  radial-gradient(400px 200px at 85% 70%, rgba(184,155,94,.12), transparent 60%);
+      pointer-events:none;
+    }
+
+    .calli{
+      font-family: "Great Vibes", cursive;
+      font-size: 40px;
+      line-height: 1.05;
+      margin: 0;
+      position: relative;
+      text-align: center;
+      color: #1f2328;
+      text-shadow: 0 1px 0 rgba(255,255,255,.35);
+    }
+    .calli .line2{
+      display:block;
+      margin-top: 6px;
+      font-size: 34px;
+      color: #2b2f35;
+    }
+
+    /* New font for the confirmation text */
+    .sub{
+      margin:12px 0 0;
+      position:relative;
+      text-align:center;
+      font-size: 16px;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      color: rgba(31,35,40,.88);
+    }
+
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns: 1fr 1fr;
+      align-items:start;
+    }
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      background: rgba(255,255,255,var(--panel_alpha));
+      border:1px solid rgba(231,226,218,.65);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+    }
+    .card h2{margin:0 0 10px; font-size:18px}
+
+    form{display:grid; gap:12px; margin-top:8px}
+    label{font-size:13px; color:rgba(90,101,114,.95)}
+    input, select{
+      width:100%; padding:12px 12px; border-radius:12px;
+      border:1px solid var(--line); background:#fff; color:var(--ink);
+      font:inherit;
+    }
+    .row{display:grid; gap:12px; grid-template-columns:1fr 1fr}
+    @media (max-width:520px){ .row{grid-template-columns:1fr} }
+
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    button{
+      border:0; border-radius:12px; padding:12px 16px; cursor:pointer;
+      background:linear-gradient(135deg, var(--gold), #d7c18b);
+      color:#fff; font-weight:700;
+    }
+    button:disabled{opacity:.55; cursor:not-allowed}
+    .secondary{
+      background:#fff; color:var(--ink); border:1px solid var(--line); font-weight:600;
+    }
+    .success, .error{
+      padding:12px; border-radius:12px; border:1px solid; font-size:14px;
+    }
+    .success{background:#f2fbf3; border-color:#bfe6c5; color:#1e6b2a}
+    .error{background:#fff3f3; border-color:#f0b6b6; color:#8a1f1f}
+
+    .photoWrap{padding:14px}
+    .photo{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
+      border:1px solid rgba(231,226,218,.90);
+      box-shadow: 0 12px 30px rgba(25, 30, 35, .12);
+      background:#fff;
+    }
+
+    footer{margin-top:14px; color:rgba(90,101,114,.95); font-size:12px; text-align:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="page">
+      <header>
+        <p class="calli">
+          Eric et Noel vous attendent
+          <span class="line2">le samedi 6 juin 2026 à 11h30 à la Maison des Arts Janusz Korczak, Maurecourt</span>
+        </p>
+
+        <p class="sub">
+          Merci de confirmer votre participation au plus tard le <b>Samedi 31 Janvier 2026</b>
+        </p>
+      </header>
+
+      <div class="grid">
+        <!-- LEFT: Form -->
+        <section class="card">
+          <h2>Confirmer</h2>
+
+          <form id="rsvpForm" method="POST" action="https://formspree.io/f/xzdzrywb">
+            <input type="hidden" name="_subject" value="RSVP — Mariage Éric KADIO & Noël MOMO" />
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div>
+              <label for="name">Nom & prénom *</label>
+              <input id="name" name="Nom" required placeholder="Ex. Marie Dupont" />
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="phone">Numéro de téléphone *</label>
+                <input id="phone" name="Téléphone" required placeholder="Ex. +33 6 ..." />
+              </div>
+              <div>
+                <label for="email">Email *</label>
+                <input id="email" name="Email" type="email" required placeholder="Ex. nom@exemple.com" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="guests">Nombre de personnes *</label>
+                <select id="guests" name="Nombre_de_personnes" required>
+                  <option value="" selected disabled>Choisir…</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+              <div>
+                <label for="attendance">Présence *</label>
+                <select id="attendance" name="Présence" required>
+                  <option value="" selected disabled>Choisir…</option>
+                  <option value="Oui">Oui, je serai présent(e)</option>
+                  <option value="Non">Non, je ne pourrai pas venir</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button id="submitBtn" type="submit">Envoyer ma confirmation</button>
+              <button class="secondary" type="reset">Réinitialiser</button>
+            </div>
+
+            <div id="status"></div>
+          </form>
+        </section>
+
+        <!-- RIGHT: Invitation image (PNG) -->
+        <section class="card photoWrap">
+          <img class="photo" src="Eric%20et%20Noel.png" alt="Invitation" />
+        </section>
+      </div>
+
+      <footer>
+        En cas de difficulté, contactez directement les mariés.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("rsvpForm");
+    const statusBox = document.getElementById("status");
+    const btn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusBox.innerHTML = "";
+      if (!form.checkValidity()) {
+        statusBox.innerHTML = `<div class="error">Merci de remplir tous les champs obligatoires.</div>`;
+        return;
+      }
+      btn.disabled = true;
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          form.reset();
+          statusBox.innerHTML = `<div class="success">Merci. Votre confirmation a bien été envoyée.</div>`;
+        } else {
+          statusBox.innerHTML = `<div class="error">Envoi non abouti. Réessayez plus tard.</div>`;
+        }
+      } catch (err) {
+        statusBox.innerHTML = `<div class="error">Erreur de connexion. Réessayez plus tard.</div>`;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
